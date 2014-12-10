@@ -1,36 +1,21 @@
 package payment
 
-import org.scalatest.{OptionValues, Matchers, WordSpec}
+class InvoiceSpec {
 
-class InvoiceSpec extends WordSpec with Matchers with OptionValues {
+    def test(fun: => Any): Unit = {
 
-  "The model with invoice" when {
-    "used with payment" should {
+    }
 
+    test {
       val payment = Payment(
-        payer = Some("payer")
+        payer = Some("payer")  // this still compile if val payer on line 19 is commentted out, where the 'payer' comes from?
       )
+
       val invoice = Invoice(
         payment = Some(payment)
       )
 
-      "contains the field payment" in {
-        invoice.payment should be ('defined)
-      }
-
-      // compiles fine
-      val zePayer = invoice.payment.value.payer
-      "contains the field payment.payer" in {
-        zePayer.value shouldEqual "payer"
-      }
-
       // does not compile
-      val payer = invoice.payment.value.payer
-      "contains the field payment.payer2" in {
-        payer.value shouldEqual "payer"
-      }
-
+      val payer = invoice.payment.get.payer
     }
-  }
-
 }
