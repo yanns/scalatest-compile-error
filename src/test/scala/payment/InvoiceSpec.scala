@@ -8,7 +8,7 @@ class InvoiceSpec {
 
     test {
       val payment = Payment(
-        payer = Some("payer")  // this still compile if val payer on line 19 is commentted out, where the 'payer' comes from?
+        payer = Some("payer")
       )
 
       val invoice = Invoice(
