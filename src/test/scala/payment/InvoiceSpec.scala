@@ -17,5 +17,8 @@ class InvoiceSpec {
 
       // does not compile
       val payer = invoice.payment.get.payer
+
+      // compile
+//      val payer: Option[String] = invoice.payment.get.payer
     }
 }
